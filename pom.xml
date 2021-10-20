@@ -5,7 +5,10 @@
 	<groupId>CucumberJava</groupId>
 	<artifactId>CucumberJava</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-
+	<!-- platform independent -->
+	<properties>
+    		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
 		<dependency>
