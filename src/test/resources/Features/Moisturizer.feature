@@ -4,8 +4,9 @@
 @functional
 Feature: Weather Shopper
   I want to use this template for my feature file
-
-@below19
+     
+      
+@below19 @Chrome
   Scenario: Shop for moisturizers if the weather is below 19 degrees
    	Given user is on Home Page
     And user reads if the Current temperature below 19
