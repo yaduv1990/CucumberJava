@@ -40,7 +40,7 @@ public class WeatherShopper {
 	//System.out.println("Current path: "+ projectPath);
 	WebDriver driver=null;
 	String chromedriverpath =  projectPath+"/src/test/resources/drivers/chromedriver.exe";   // return driver folder path 
-	String firefoxdriverpath =  "/CucumberJava/src/test/resources/drivers/geckodriver.exe";   // return driver folder path
+	String firefoxdriverpath = projectPath+"/src/test/resources/drivers/geckodriver.exe";   // return driver folder path
 	String temp=null;
 	List<WebElement> moisturizersName=null;
 	List<WebElement> moisturizersPrice=null;
