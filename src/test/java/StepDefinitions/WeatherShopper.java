@@ -22,6 +22,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -40,7 +41,8 @@ public class WeatherShopper {
 	//System.out.println("Current path: "+ projectPath);
 	WebDriver driver=null;
 	String chromedriverpath =  projectPath+"/src/test/resources/drivers/chromedriver.exe";   // return driver folder path 
-	String firefoxdriverpath = projectPath+"/src/test/resources/drivers/geckodriver.exe";   // return driver folder path
+	String firefoxdriverpath =  projectPath+"/src/test/resources/drivers/geckodriver.exe";
+	String iedriverpath =  projectPath+"/src/test/resources/drivers/IEDriverServer.exe";// return driver folder path
 	String temp=null;
 	List<WebElement> moisturizersName=null;
 	List<WebElement> moisturizersPrice=null;
@@ -50,7 +52,7 @@ public class WeatherShopper {
 	Double tempreture;
 	String scenarioName = null;
 	//var scenarioTags   = Scenario.name;
-	String browser="chrome";
+	String browser="ie";
 
 	public void setup(String browser) throws Exception{
 
@@ -58,6 +60,9 @@ public class WeatherShopper {
 		if(browser.equalsIgnoreCase("firefox")){
 			System.setProperty("webdriver.gecko.driver", firefoxdriverpath);
 			driver = new FirefoxDriver();
+		}else if(browser.equalsIgnoreCase("ie")){
+			System.setProperty("webdriver.ie.driver", iedriverpath);
+			driver = new InternetExplorerDriver();
 		}
 
 		else if(browser.equalsIgnoreCase("chrome")){
