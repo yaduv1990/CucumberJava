@@ -51,10 +51,10 @@ public class WeatherShopper {
 	String scenarioName = null;
 	//var scenarioTags   = Scenario.name;
 	String browser="chrome";
-	
+
 	public void setup(String browser) throws Exception{
-		
-		
+
+
 		if(browser.equalsIgnoreCase("firefox")){
 			System.setProperty("webdriver.gecko.driver", firefoxdriverpath);
 			driver = new FirefoxDriver();
@@ -76,12 +76,7 @@ public class WeatherShopper {
 			options.addArguments("enable-features=NetworkServiceInProcess");
 
 			driver = new ChromeDriver(options);
-		}
-
-		else if(browser.equalsIgnoreCase("Edge")){
-			System.setProperty("webdriver.edge.driver",".\\MicrosoftWebDriver.exe");
-			driver = new EdgeDriver();
-		}
+		}		
 		else{
 			throw new Exception("Browser is not correct");
 		}
@@ -89,18 +84,18 @@ public class WeatherShopper {
 		driver.manage().timeouts().pageLoadTimeout(20,TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 	}
-	
-	    @AfterClass
-	    void closeBrowser() {       
-	         driver.close();
-	    }
+
+	@AfterClass
+	void closeBrowser() {       
+		driver.quit();
+	}
 	@Given("user is on Home Page")
 	public void user_is_on_home_page() throws Exception {
 		// System.out.println("Inside Step:");
 		//System.out.println("Inside Step:user is on Home Page");
 		setup(browser);
 		driver.navigate().to("https://weathershopper.pythonanywhere.com/");
-		
+
 	}
 	@And("user reads the tempreture")
 	public void user_reads_the_tempreture() {
@@ -118,23 +113,28 @@ public class WeatherShopper {
 		}
 	}
 	@And("user reads if the Current temperature below {int}")
-	public void user_reads_the_current_temperature_below(Integer int1) {		
+	public void user_reads_the_current_temperature_below(Integer int1) throws Exception {		
 		temp=driver.findElement(By.xpath("//*[@id=\"temperature\"]")).getText();
 		temp=temp.replaceAll("[^\\d\\.]","");
 		double n = Double.valueOf(temp);
 		System.out.println("Current Temp: "+temp);
 		// int tempInt=Integer.parseInt(temp.trim());
-		
-			if(n >19) {
-				System.out.println(" Temp >19 ");
-					closeBrowser();			
-				
-			}else{
-				System.out.println(" We will select moisturizers");
-				
-			}
-		
+
+		while(n >19) {
+			System.out.println(" Temp >19 ");
+			//closeBrowser();	
+			driver.get("https://weathershopper.pythonanywhere.com/");
+			//user_is_on_home_page();
+			temp=driver.findElement(By.xpath("//*[@id=\"temperature\"]")).getText();
+			temp=temp.replaceAll("[^\\d\\.]","");
+			n = Double.valueOf(temp);
+			System.out.println("New Current Temp: "+n);
+		}
+			System.out.println(" We will select moisturizers");
+
 	}
+	
+	
 	@Given("user start the test for {string}")
 	public void user_start_the_test_for(String string) {
 		driver.findElement(By.xpath("//*[text()=\'"+string+"\']"));
@@ -472,26 +472,28 @@ public class WeatherShopper {
 		driver.findElement(By.xpath("//*[starts-with(text(), string)]"));
 		closeBrowser();
 	}
-	
+
 	//-----Sunscreen functions
 	@And("user reads if the Current temperature above {int}")
-	public void user_reads_if_the_current_temperature_above(Integer int1) {
+	public void user_reads_if_the_current_temperature_above(Integer int1) throws Exception {
 		temp=driver.findElement(By.xpath("//*[@id=\"temperature\"]")).getText();
 
 		temp=temp.replaceAll("[^\\d\\.]","");
 		double n = Double.valueOf(temp);
 		System.out.println("Current Temp: "+temp);
 		// int tempInt=Integer.parseInt(temp.trim());
-		if(n <34) {
-			System.out.println(" Temp <34 ");
-				closeBrowser();			
-			
-		}else{
-			System.out.println(" We will select moisturizers");
-			
+		while(n <34) {
+			System.out.println(" Temp <34");
+			driver.get("https://weathershopper.pythonanywhere.com/");
+			//user_is_on_home_page();
+			temp=driver.findElement(By.xpath("//*[@id=\"temperature\"]")).getText();
+			temp=temp.replaceAll("[^\\d\\.]","");
+			n = Double.valueOf(temp);
+			System.out.println("New Current Temp: "+n);
 		}
+			System.out.println(" We will select Sunscreens");
 	}
-	
+
 
 	@And("user should see Sunscreens section")
 	public void user_should_see_sunscreens_section() {
@@ -592,5 +594,5 @@ public class WeatherShopper {
 		assertEquals(driver.findElement(By.xpath("//tbody/tr[2]/td[1]")).getText(),leastExpensiveSpf30);
 	}
 
-	
+
 }
