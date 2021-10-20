@@ -53,7 +53,7 @@ public class WeatherShopper {
 	Double tempreture;
 	String scenarioName = null;
 	//var scenarioTags   = Scenario.name;
-	String browser="firefox";
+	String browser="chrome";
 	@BeforeTest
 	
 	public void setup(String browser) throws Exception{
