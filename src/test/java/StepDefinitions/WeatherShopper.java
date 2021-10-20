@@ -26,9 +26,6 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Parameters;
-
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import io.cucumber.java.en.And;
@@ -54,7 +51,6 @@ public class WeatherShopper {
 	String scenarioName = null;
 	//var scenarioTags   = Scenario.name;
 	String browser="chrome";
-	@BeforeTest
 	
 	public void setup(String browser) throws Exception{
 		
