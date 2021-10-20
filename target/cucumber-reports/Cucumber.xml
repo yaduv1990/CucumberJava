@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="40.178">
+    <testcase classname="Weather Shopper" name="Shop for moisturizers if the weather is below 19 degrees" time="39.701">
+        <system-out><![CDATA[Given user is on Home Page..................................................passed
+And user reads if the Current temperature below 19..........................passed
+When user clicks on info icon...............................................passed
+Then user should see Your task info tip.....................................passed
+And user should see info tip text contains as "Shop for"....................passed
+And user should see Moisturizers section....................................passed
+And user should see Buy moisturizers button.................................passed
+When user should click on Buy moisturizers button...........................passed
+Then user should be on Moisturizers page....................................passed
+And user should click on info icon..........................................passed
+And user should see Your task info..........................................passed
+And user should see info tip text contains "Add two moisturizers to your cart.".passed
+And user should see moisturizers content....................................passed
+And user should see moisturizers price......................................passed
+And user should select least expensive moisturizer that contains Aloe.......passed
+And user should select the least expensive moisturizer that contains Almond.passed
+And user clicks on cart.....................................................passed
+And user should be on Checkout page.........................................passed
+And user should click on info icon..........................................passed
+And user should see Your task info..........................................passed
+And user should see info text contains "Verify that the shopping cart looks correct.".passed
+And user should verify items................................................passed
+And user should verify Pay with Card button.................................passed
+And user should click on Pay with Card button...............................passed
+And user should see Payment details form....................................passed
+And user should enter email as "test123@gmail.com"..........................passed
+And user should click on Test Mode..........................................passed
+And user should copy a card number..........................................passed
+And user should be back on Payment page.....................................passed
+And user should enter card number...........................................passed
+And user should enter date as "12/22".......................................passed
+And user should enter cvc as "456"..........................................passed
+And user should see zip code field..........................................passed
+And user should enter zip code as "560037"..................................passed
+And user clicks on Pay button...............................................passed
+And user should be on Confirmation page.....................................passed
+And user should click on info icon..........................................passed
+And user should see Your task info..........................................passed
+And user should see info text contains "Verify if the payment was successful.".passed
+And user should see Payment Success.........................................passed
+And user should see Payment Success message as "Your payment was successful.".passed
+]]></system-out>
+    </testcase>
+</testsuite>
