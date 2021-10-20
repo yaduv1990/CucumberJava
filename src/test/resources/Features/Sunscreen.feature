@@ -5,7 +5,7 @@
 Feature: Weather Shopper
   I want to use this template for my feature file
 
-  @above34
+  @above34 @Firefox
   Scenario: Shop for sunscreen if the weather is above 34 degrees
     Given user is on Home Page
     And user reads if the Current temperature above 34
