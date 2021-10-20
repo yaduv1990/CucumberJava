@@ -52,7 +52,7 @@ public class WeatherShopper {
 	Double tempreture;
 	String scenarioName = null;
 	//var scenarioTags   = Scenario.name;
-	String browser="ie";
+	String browser="chrome";
 
 	public void setup(String browser) throws Exception{
 
