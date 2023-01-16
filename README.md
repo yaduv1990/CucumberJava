@@ -1,5 +1,5 @@
 # CucumberJava
- Autominng the Weather shopper website <br /><br />
+ Automatinng the Weather shopper website <br /><br />
  Precondition: Maven and java<br /><br />
  **To run the scripts in command line:**  <br />
  1.Set the project path <br />
